@@ -1,4 +1,6 @@
 const User = require("./../model/User");
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 module.exports = {
   getLogin: (req, res) => {
@@ -9,25 +11,25 @@ module.exports = {
   },
   postLogin: (req, res, next) => {
     passport.authenticate("local", {
-      successRedirect: "/ideas",
+      successRedirect: "/",
       failureRedirect: "/users/login",
       failureFlash: true
     })(req, res, next);
   },
   postRegister: (req, res) => {
-    let errors = [];
+    let err = [];
 
     if (req.body.password != req.body.password2) {
-      errors.push({ text: "Passwords do not match" });
+      err.push({ text: "Passwords do not match" });
     }
 
     if (req.body.password.length < 4) {
-      errors.push({ text: "Password must be at least 4 characters" });
+      err.push({ text: "Password must be at least 4 characters" });
     }
 
-    if (errors.length > 0) {
+    if (err.length > 0) {
       res.render("users/register", {
-        errors: errors,
+        err: err,
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,

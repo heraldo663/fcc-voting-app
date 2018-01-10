@@ -5,19 +5,22 @@
   "scripts": {
     "start": "node ./bin/www",
     "server": "nodemon",
-    "build-css": "node-sass-chokidar public/sass -o public/stylesheets --watch --recursive",
+    "build-css":
+      "node-sass-chokidar public/sass -o public/stylesheets --watch --recursive",
     "dev": "npm-run-all --parallel server build-css"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
     "bulma": "^0.6.1",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^4.0.0",
-    "ejs": "~2.5.7",
     "express": "~4.15.5",
     "express-ejs-layouts": "^2.3.1",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "mongoose": "^4.13.9",
     "morgan": "~1.9.0",
     "node-sass-chokidar": "0.0.3",

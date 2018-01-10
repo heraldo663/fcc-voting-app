@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>
     Voting-App-Fcc
   </title>
@@ -12,11 +13,14 @@
 </head>
 
 <body>
-  <%- include('partials/navbar') %>
-    <%- body %>
+  {{> _navbar}}
 
-      <%- include('partials/footer') %>
-        <script src="/javascripts/main.js"></script>
+  <div class="container">
+    {{> _msg}} {{> _errors}} {{{body}}}
+  </div>
+
+  {{> _footer}}
+  <script src="/javascripts/main.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,6 @@ if (process.env.NODE_ENV === "development") {
 } else {
   mongoose.connect(process.env.MONGO_URI, { useMongoClient: true });
 }
-mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
