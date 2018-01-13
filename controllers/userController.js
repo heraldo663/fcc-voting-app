@@ -11,7 +11,7 @@ module.exports = {
   },
   postLogin: (req, res, next) => {
     passport.authenticate("local", {
-      successRedirect: "/",
+      successRedirect: "/dashboard",
       failureRedirect: "/users/login",
       failureFlash: true
     })(req, res, next);
@@ -38,8 +38,11 @@ module.exports = {
     } else {
       User.findOne({ email: req.body.email }).then(user => {
         if (user) {
-          req.flash("error_msg", "Email already regsitered");
-          res.redirect("/users/register");
+          req.flash("error_msg", "Email already registered");
+          const error_msg = req.flash("error_msg")[0];
+          res.render("users/register", {
+            error_msg
+          });
         } else {
           const newUser = new User({
             name: req.body.name,
@@ -58,7 +61,10 @@ module.exports = {
                     "success_msg",
                     "You are now registered and can log in"
                   );
-                  res.redirect("/users/login");
+                  const success_msg = req.flash("success_msg")[0];
+                  res.render("users/login", {
+                    success_msg
+                  });
                 })
                 .catch(err => {
                   console.log(err);
@@ -73,6 +79,9 @@ module.exports = {
   getLogout: (req, res) => {
     req.logout();
     req.flash("success_msg", "You are logged out");
-    res.redirect("/users/login");
+    const success_msg = req.flash("sucess_msg");
+    res.render("users/login", {
+      success_msg
+    });
   }
 };

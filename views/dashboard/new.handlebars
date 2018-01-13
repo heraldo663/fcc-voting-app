@@ -1,0 +1,24 @@
+<div class="container">
+  <h3 class="has-text-centered">New Poll</h3>
+  <form action="/dashboard/create" method="post">
+    <div class="field">
+      <label class="label">Title</label>
+      <div class="control">
+        <input class="input" name="title" type="text" placeholder="Title">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">item</label>
+      <div id="options">
+        <div class="control">
+          <input class="input" name="itens" type="text" placeholder="item">
+        </div>
+        <div class="control">
+          <input class="input" name="itens" type="text" placeholder="item">
+        </div>
+      </div>
+      <button class="button is-light" id="add">Add Options</button>
+    </div>
+    <button class="button is-success" type="submit">Submit</button>
+  </form>
+</div>

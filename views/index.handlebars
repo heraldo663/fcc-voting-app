@@ -1,0 +1,13 @@
+{{> _hero}}
+<nav class="panel has-text-centered">
+  <p class="panel-heading">
+    Polls
+  </p>
+  {{#each polls}}
+
+  <a id="center" class="panel-block is-active" href="/{{_id}}">
+    {{title}}
+  </a>
+
+  {{/each}}
+</nav>

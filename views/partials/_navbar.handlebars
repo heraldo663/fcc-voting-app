@@ -10,6 +10,22 @@
         <span></span>
       </div>
     </div>
+    {{#if user}}
+    <div class="navbar-menu" id="navMenu">
+      <div class="navbar-end">
+        <!-- hidden on mobile -->
+        <a class="navbar-item" href="/dashboard">
+          My Polls
+        </a>
+        <a class="navbar-item" href="/dashboard/new">
+          New Poll
+        </a>
+        <a class="navbar-item" href="/users/logout">
+          Logout
+        </a>
+      </div>
+    </div>
+    {{else}}
     <div class="navbar-menu" id="navMenu">
       <div class="navbar-end">
         <!-- hidden on mobile -->
@@ -21,5 +37,6 @@
         </a>
       </div>
     </div>
+    {{/if}}
   </div>
 </nav>

@@ -20,4 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   }
+
+  $("#add").click(function() {
+    event.preventDefault();
+    var inputToAdd = $(
+      '<div class="control"> <input class="input" name="itens" type="text" placeholder="item"></div>'
+    );
+    var $inputFiled = $("#options");
+    $inputFiled.append(inputToAdd);
+  });
 });
