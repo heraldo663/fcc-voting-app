@@ -1,1 +1,20 @@
-<h1>Test</h1>
+<div class="container">
+  <h2 class="has-text-centered is-size-3">{{poll.title}}</h2>
+  <canvas id="chart" style="height:40vh; width:50vw">
+  </canvas>
+
+
+
+  <form action="dashboard/vote" method="get">
+    <div class="control">
+      {{#each poll.itens}}
+      <label class="radio">
+        <input type="radio" name="vote"> {{item}}
+      </label>
+      {{/each}}
+    </div>
+    <div class="row">
+      <button type="submit" class="button is-success vote">Vote</button>
+    </div>
+  </form>
+</div>

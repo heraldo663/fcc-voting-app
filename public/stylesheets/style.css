@@ -6473,3 +6473,18 @@ label.panel-block {
   text-decoration: none;
   color: rgba(54, 54, 54, 0.9);
   margin-right: 15px; }
+
+.control {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; }
+
+.radio {
+  margin-right: 15px; }
+
+.row {
+  display: flex;
+  justify-content: center; }
+
+.vote {
+  margin: 20px auto; }

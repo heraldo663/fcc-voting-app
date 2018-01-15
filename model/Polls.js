@@ -9,7 +9,9 @@ const PollSchema = new Schema({
   },
   itens: [
     {
-      type: String
+      item: {
+        type: String
+      }
     }
   ],
   date: {

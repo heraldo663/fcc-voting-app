@@ -6,7 +6,8 @@ module.exports = {
     res.render("index", { polls: allPolls, user: req.user });
   },
   getPoll: async (req, res) => {
-    const poll = await Polls.findById(req.params._id);
+    const poll = await Polls.findById(req.params.id);
+    console.log(poll);
     res.render("dashboard/poll", { poll, user: req.user || null });
   },
   getNewPoll: async (req, res) => {
@@ -17,8 +18,15 @@ module.exports = {
     res.render("dashboard/mypolls", { polls: myPolls, user: req.user });
   },
   postPolls: async (req, res) => {
+    const itens = req.body.itens.map(item => {
+      return {
+        item
+      };
+    });
+
     const newPoll = new Polls({
-      ...req.body,
+      title: req.body.title,
+      itens,
       user: req.user._id
     });
 
