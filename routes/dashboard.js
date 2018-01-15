@@ -6,7 +6,8 @@ const {
   getAllPolls,
   getPoll,
   getNewPoll,
-  getMyPolls
+  getMyPolls,
+  deletePoll
 } = require("./../controllers/dashboardController");
 const Polls = require("./../model/Polls");
 
@@ -19,5 +20,7 @@ router.get("/mypolls", ensureAuthenticated, getMyPolls);
 router.get("/:id", getPoll);
 
 router.post("/create", ensureAuthenticated, postPolls);
+
+router.delete("/delete/:id", ensureAuthenticated, deletePoll);
 
 module.exports = router;

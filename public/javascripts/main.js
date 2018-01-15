@@ -29,4 +29,17 @@ document.addEventListener("DOMContentLoaded", function() {
     var $inputFiled = $("#options");
     $inputFiled.append(inputToAdd);
   });
+
+  $("#delete").click(function() {
+    var id = $(this).data("id");
+    $.ajax({
+      url:
+        "http://localhost:3000/dashboard/delete/" + id ||
+        process.env.MY_URL + "/dashboard/delete/" + id,
+      type: "DELETE",
+      success: function(res) {
+        window.location.reload(true);
+      }
+    });
+  });
 });

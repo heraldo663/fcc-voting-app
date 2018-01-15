@@ -1,0 +1,15 @@
+{{> _hero}}
+<nav class="panel has-text-centered">
+  <p class="panel-heading">
+    Polls
+  </p>
+  {{#each polls}}
+  <div class="panel-block" id="center">
+    <a class="panel-link" href="/dashboard/{{_id}}">
+      {{title}}
+    </a>
+    <button class="button" data-id="{{_id}}" id="delete">Delete</button>
+  </div>
+
+  {{/each}}
+</nav>
