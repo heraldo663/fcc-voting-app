@@ -36,23 +36,40 @@ document.addEventListener("DOMContentLoaded", function() {
       url:
         "http://localhost:3000/dashboard/delete/" + id ||
         process.env.MY_URL + "/dashboard/delete/" + id,
-      type: "DELETE",
+      method: "DELETE",
       success: function(res) {
         window.location.reload(true);
       }
     });
   });
+  $("#patch").click(function() {
+    event.preventDefault();
+    var id = $(this).data("id");
+    $.ajax({
+      url:
+        "http://localhost:3000/dashboard/" + id + "/vote" ||
+        process.env.MY_URL + "/dashboard/" + id + "/vote",
+      type: "POST",
+      method: "PATCH",
+      success: function(res) {}
+    });
+  });
 
   // chatjs
   var ctx = document.getElementById("chart");
+  var itens = $("#chart").data("itens");
+  itens = itens.split(",");
+  var votes = $("#chart").data("votes");
+  votes = votes.split(",");
+
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+      labels: itens,
       datasets: [
         {
           label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
+          data: votes,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",

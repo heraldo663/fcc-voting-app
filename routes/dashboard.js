@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureAuthenticated } = require("./../helpers/auth");
 const {
   postPolls,
+  patchVote,
   getAllPolls,
   getPoll,
   getNewPoll,
@@ -16,6 +17,8 @@ router.get("/", ensureAuthenticated, getAllPolls);
 router.get("/new", ensureAuthenticated, getNewPoll);
 
 router.get("/mypolls", ensureAuthenticated, getMyPolls);
+
+router.patch("/:id/vote", patchVote);
 
 router.get("/:id", getPoll);
 

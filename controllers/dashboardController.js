@@ -7,7 +7,6 @@ module.exports = {
   },
   getPoll: async (req, res) => {
     const poll = await Polls.findById(req.params.id);
-    console.log(poll);
     res.render("dashboard/poll", { poll, user: req.user || null });
   },
   getNewPoll: async (req, res) => {
@@ -32,6 +31,21 @@ module.exports = {
 
     const poll = await newPoll.save();
     res.render("dashboard/create", poll);
+  },
+  patchVote: async (req, res) => {
+    let keysValues = Object.keys(req.body);
+    let vote = "";
+    keysValues.map((content, index, array) => {
+      if (content == "votes") {
+        vote = array[index - 1];
+      }
+    });
+    const poll = await Polls.findById(req.params.id);
+    const item = poll.itens.find(x => x.item == vote);
+    item.votes += 1;
+    const newPoll = await poll.save();
+    console.log(newPoll);
+    res.redirect("/");
   },
   deletePoll: async (req, res) => {
     try {
