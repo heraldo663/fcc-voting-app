@@ -18,7 +18,7 @@ router.get("/new", ensureAuthenticated, getNewPoll);
 
 router.get("/mypolls", ensureAuthenticated, getMyPolls);
 
-router.patch("/:id/vote", patchVote);
+router.patch("/:id/vote", ensureAuthenticated, patchVote);
 
 router.get("/:id", getPoll);
 

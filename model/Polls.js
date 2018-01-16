@@ -15,7 +15,12 @@ const PollSchema = new Schema({
       votes: {
         type: Number,
         default: 0
-      }
+      },
+      usersWhoVotes: [
+        {
+          type: String
+        }
+      ]
     }
   ],
   date: {

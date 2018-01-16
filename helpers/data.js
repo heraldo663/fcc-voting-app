@@ -10,7 +10,6 @@ module.exports = {
   getArrayofVotes: function(ArrayOfObjects) {
     var votesArray = [];
     ArrayOfObjects.map(function(itens) {
-      console.log(itens);
       votesArray.push(itens.votes);
     });
 

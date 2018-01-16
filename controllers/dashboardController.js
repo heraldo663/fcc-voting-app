@@ -41,11 +41,22 @@ module.exports = {
       }
     });
     const poll = await Polls.findById(req.params.id);
-    const item = poll.itens.find(x => x.item == vote);
-    item.votes += 1;
-    const newPoll = await poll.save();
-    console.log(newPoll);
-    res.redirect("/");
+
+    let userWhoVote = poll.itens.find(x => x.usersWhoVotes);
+    userWhoVote = userWhoVote.usersWhoVotes.find(x => {
+      if (x == req.user._id) {
+        return x;
+      }
+    });
+    if (userWhoVote) {
+      res.render("dashboard/poll", { poll, error_msg: "You already vote!" });
+    } else {
+      let item = poll.itens.find(x => x.item == vote);
+      item.votes += 1;
+      item.usersWhoVotes = [...item.usersWhoVotes.concat(req.user._id)];
+      const newPoll = await poll.save();
+      res.redirect("/");
+    }
   },
   deletePoll: async (req, res) => {
     try {
